@@ -80,3 +80,59 @@ public class Main {
     }
 }
 ```
+
+# Leveraging Java 8
+
+In Java 8 has a feature to define static methods in the interface. So that, we are going to use that to reduce code verbosity. First of all, get rid of the **CashPaymentStrategy.java** and **CreditCardPaymentStrategy.java**.
+
+```java
+public interface PaymentStrategy {
+
+    double pay(double amount);
+
+    static PaymentStrategy cashPayment(){
+        double serviceCharge = 5.00;
+        return amount -> amount + serviceCharge;
+    }
+
+    static PaymentStrategy creditCardPayment(){
+        double serviceCharge = 5.00;
+        double creditCardFee = 10.00;
+        return amount -> amount + serviceCharge + creditCardFee;
+    }
+}
+```
+
+```java runnable
+// { autofold
+public interface PaymentStrategy {
+
+      double pay(double amount);
+
+      static PaymentStrategy cashPayment(){
+          double serviceCharge = 5.00;
+          return amount -> amount + serviceCharge;
+      }
+
+      static PaymentStrategy creditCardPayment(){
+          double serviceCharge = 5.00;
+          double creditCardFee = 10.00;
+          return amount -> amount + serviceCharge + creditCardFee;
+      }
+}
+// }
+public class Main {
+
+    public static void main(String[] args) {
+        double price = 100;
+
+        PaymentStrategy paymentStratgy = PaymentStrategy.cashPayment();
+        System.out.println("Cash Price: -" + paymentStratgy.pay(price));
+
+        paymentStratgy = PaymentStrategy.creditCardPayment();
+        System.out.println("Credit Card Price: -" + paymentStratgy.pay(price));
+    }
+}
+```
+
+Original post :- http://mydevgeek.com/strategy-design-pattern-java-8/
