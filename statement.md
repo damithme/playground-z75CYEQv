@@ -46,6 +46,7 @@ public class CreditCardStrategy implements PaymentStrategy {
 The implementation is done. Now, we are going to test it.
 
 ```java runnable
+// { autofold
 interface PaymentStrategy {
     double pay(double amount);
 }
@@ -66,17 +67,16 @@ class CreditCardStrategy implements PaymentStrategy {
         return amount + serviceCharge + creditCardFee;
     }
 }
-// { autofold
+// }
 public class Main {
 
     public static void main(String[] args) {
         double price = 100;
         PaymentStrategy paymentStrategy = new CashPaymentStrategy();
-        System.out.println("Cash Price: -" + paymentStrategy.pay(price));
+        System.out.println("Cash Price: - " + paymentStrategy.pay(price));
 
         paymentStrategy = new CreditCardStrategy();
-        System.out.println("Credit Card Price: -" + paymentStrategy.pay(price));
+        System.out.println("Credit Card Price: - " + paymentStrategy.pay(price));
     }
 }
-//{ autofold
 ```
