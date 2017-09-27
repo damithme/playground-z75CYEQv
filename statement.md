@@ -105,7 +105,7 @@ public interface PaymentStrategy {
 
 ```java runnable
 // { autofold
-public interface PaymentStrategy {
+interface PaymentStrategy {
 
       double pay(double amount);
 
