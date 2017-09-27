@@ -127,10 +127,10 @@ public class Main {
         double price = 100;
 
         PaymentStrategy paymentStratgy = PaymentStrategy.cashPayment();
-        System.out.println("Cash Price: -" + paymentStratgy.pay(price));
+        System.out.println("Cash Price: - " + paymentStratgy.pay(price));
 
         paymentStratgy = PaymentStrategy.creditCardPayment();
-        System.out.println("Credit Card Price: -" + paymentStratgy.pay(price));
+        System.out.println("Credit Card Price: - " + paymentStratgy.pay(price));
     }
 }
 ```
